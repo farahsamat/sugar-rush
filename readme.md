@@ -9,13 +9,15 @@ To clone this repository:
 ```
 git clone https:://github.com/Jaswanthsomesula/Datathon_2019.git
 ```
+This project runs in both [R](#r-version) and [Python](#python-version). Click on each section for detailed instructions.
 
 Note for collaborators:
 * Write meaningful commit messages for future reference.
 * Push your commit as soon as possible so that other collaborators can get access to the latest version of the project.
 
+
 ## Python version
-For r users, click [here](#r-version).
+
 
 
 ### Install packages
