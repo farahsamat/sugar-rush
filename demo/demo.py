@@ -16,8 +16,10 @@ TILE_WIDTH_PX = 512
 TILE_HEIGHT_PX = 512
 
 # Get the physical path to the PNG image containing the mask file
+
+
 def get_mask_path(tile_x, tile_y, mask_type):
-    path = f"./data/sentinel-2a-tile-{tile_x}x-{tile_y}y/masks/{mask_type}-mask.png"
+    path = f"data/sentinel-2a-tile-{tile_x}x-{tile_y}y/masks/{mask_type}-mask.png"
     return path
 
 
@@ -40,7 +42,7 @@ def is_in_mask(mask_pixels, pixel_x, pixel_y):
     else:
         return False
 
-
+mask_list = []
 def print_ascii_mask(tile_x, tile_y, mask_type):
     mask_pixels = get_mask_pixels(tile_x, tile_y, mask_type)
 
@@ -60,8 +62,10 @@ def print_ascii_mask(tile_x, tile_y, mask_type):
             # is the pixel in my mask?
             in_mask = is_in_mask(mask_pixels, pixel_x, pixel_y)
             if in_mask:
+                mask_list.append("X")
                 print("X", end="")
             else:
+                mask_list.append(" ")
                 print(" ", end="")
 
         # Print a newline at the end of each row
@@ -71,10 +75,14 @@ def print_ascii_mask(tile_x, tile_y, mask_type):
 # Get a list of all the image tiles for a specific x,y coordinate
 # for the specified band
 def get_timeseries_image_paths(tile_x, tile_y, band):
-    path = f"./data/sentinel-2a-tile-{tile_x}x-{tile_y}y/timeseries/{tile_x}-{tile_y}-{band}*.png"
+    path = f"data/sentinel-2a-tile-{tile_x}x-{tile_y}y/timeseries/{tile_x}-{tile_y}-{band}*.png"
     images = glob.glob(path)
     return images
 
 
 # Print out an ascii representation of the sugarcane regions
 print_ascii_mask(TILE_X, TILE_Y, "sugarcane-region")
+
+print(len(mask_list))
+print(mask_list)
+reconstruct_mask = ''.join(mask_list)

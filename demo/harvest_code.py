@@ -1,11 +1,11 @@
 from PIL import Image
 import os
 
-mask = Image.open("./data/sentinel-2a-tile-7680x-10240y/masks/sugarcane-region-mask.png")
-arr = os.listdir("./data/sentinel-2a-tile-7680x-10240y/timeseries")
+mask = Image.open("data/sentinel-2a-tile-7680x-10240y/masks/sugarcane-region-mask.png")
+arr = os.listdir("data/sentinel-2a-tile-7680x-10240y/timeseries")
 for k in arr:
     if "TCI" in k:
-        tile = Image.open("./data/sentinel-2a-tile-7680x-10240y/timeseries/" + k)
+        tile = Image.open("./project_data/sentinel-2a-tile-7680x-10240y/timeseries/" + k)
         date = k[15:25]
         pixels = tile.load()
         overlay = mask.load()
@@ -18,4 +18,4 @@ for k in arr:
                     channelPortion = (green / (green + red + blue))
                     if channelPortion < 0.32:
                         pixels[y, x] = (255, 0, 0)
-        tile.save("./data/harvested/" + date + ".png")
+        tile.save("data/harvested/" + date + ".png")
