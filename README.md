@@ -7,7 +7,7 @@ This project yada yada yada to be updated
 
 To clone this repository: 
 ```
-git clone https:://github.com/Jaswanthsomesula/Datathon_2019.git
+git clone https:://github.com/farahsamat/sugar-rush.git
 ```
 This project runs in both [R](#r-version) and [Python](#python-version). Click on each section for detailed instructions.
 
